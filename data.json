@@ -1,0 +1,190 @@
+[
+    {
+      "product_id": 1,
+      "ProductName": "Garam Masala",
+      "UserName": "Sunita's Spices",
+      "Image": "https://herbsandspicesaustralia.com/wp-content/uploads/2018/06/garam-masala.jpg",
+      "Email": "sunita@example.com",
+      "Category": "Spices",
+      "Ingredients": ["Cumin", "Coriander", "Cardamom", "Cinnamon", "Cloves"],
+      "Price": 5.99,
+      "Quantity": 100
+    },
+    {
+      "product_id": 2,
+      "ProductName": "Mango Pickle",
+      "Image": "https://suhana.com/wp-content/uploads/2021/02/P-Mango-200g-Jar-1.jpg",
+      "UserName": "Raj's Pickles",
+      "Email": "raj@example.com",
+      "Category": "Pickles",
+      "Ingredients": [
+        "Raw Mango",
+        "Mustard Seeds",
+        "Fenugreek",
+        "Chili Powder",
+        "Salt"
+      ],
+      "Price": 7.49,
+      "Quantity": 200
+    },
+    {
+      "product_id": 3,
+      "ProductName": "Samosa",
+      "Image":"https://th.bing.com/th/id/OIP._Y2oY12_TMB__-28l0dKpQHaEj?rs=1&pid=ImgDetMain",
+      "UserName": "Amrita's Snacks",
+      "Email": "amrita@example.com",
+      "Category": "Snacks",
+      "Ingredients": ["Potatoes", "Peas", "Spices", "Pastry Dough"],
+      "Price": 1.99,
+      "Quantity": 50
+    },
+    {
+      "product_id": 4,
+      "ProductName": "Chai Masala",
+      "Image":"https://www.whiskaffair.com/wp-content/uploads/2014/04/Chai-Masala-1-2.jpg",
+      "UserName": "Vijay's Spices",
+      "Email": "vijay@example.com",
+      "Category": "Spices",
+      "Ingredients": ["Cardamom", "Cinnamon", "Cloves", "Ginger", "Black Pepper"],
+      "Price": 4.49,
+      "Quantity": 80
+    },
+    {
+      "product_id": 5,
+      "ProductName": "Lime Pickle",
+      "Image":"https://th.bing.com/th/id/OIP.bI0eJueiUk03E87nwi2k-gHaEc?rs=1&pid=ImgDetMain",
+      "UserName": "Priya's Pickles",
+      "Email": "priya@example.com",
+      "Category": "Pickles",
+      "Ingredients": ["Lime", "Mustard Seeds", "Chili Powder", "Salt"],
+      "Price": 6.99,
+      "Quantity": 150
+    },
+    {
+      "product_id": 6,
+      "ProductName": "Pakora",
+      "Image":"https://th.bing.com/th/id/OIP.IP3hK9xm5eVHd3YqT1P83AHaFj?rs=1&pid=ImgDetMain",
+      "UserName": "Rahul's Snacks",
+      "Email": "rahul@example.com",
+      "Category": "Snacks",
+      "Ingredients": ["Onions", "Chickpea Flour", "Spices", "Oil"],
+      "Price": 3.49,
+      "Quantity": 70
+    },
+    {
+      "product_id": 7,
+      "ProductName": "Turmeric Powder",
+      "Image":"https://servingjoy.com/wp-content/uploads/2014/12/turmeric-powder-close-up.jpg",
+      "UserName": "Ananya's Spices",
+      "Email": "ananya@example.com",
+      "Category": "Spices",
+      "Ingredients": ["Turmeric"],
+      "Price": 3.99,
+      "Quantity": 120
+    },
+    {
+      "product_id": 8,
+      "ProductName": "Mixed Vegetable Pickle",
+      "Image":"https://images.saymedia-content.com/.image/t_share/MTc0NjIwNzA0Mzk3MTQxOTYx/how-to-make-mixed-vegetable-pickle-in-10-minutes.jpg",
+      "UserName": "Kiran's Pickles",
+      "Email": "kiran@example.com",
+      "Category": "Pickles",
+      "Ingredients": [
+        "Mixed Vegetables",
+        "Mustard Seeds",
+        "Chili Powder",
+        "Salt"
+      ],
+      "Price": 8.99,
+      "Quantity": 180
+    },
+    {
+      "product_id": 9,
+      "ProductName": "Bhel Puri",
+      "Image":"https://www.dwarakaorganic.com/wp-content/uploads/2022/02/Bhel-Puri-2000x1333.jpg",
+      "UserName": "Riya's Snacks",
+      "Email": "riya@example.com",
+      "Category": "Snacks",
+      "Ingredients": ["Puffed Rice", "Sev", "Chutneys", "Onions", "Tomatoes"],
+      "Price": 2.49,
+      "Quantity": 90
+    },
+    {
+      "product_id": 10,
+      "ProductName": "Cumin Seeds",
+      "Image":"https://th.bing.com/th/id/OIP.emvemHvP9Tn0mqBJT-uAAQHaE8?rs=1&pid=ImgDetMain",
+      "UserName": "Sanjay's Spices",
+      "Email": "sanjay@example.com",
+      "Category": "Spices",
+      "Ingredients": ["Cumin"],
+      "Price": 2.49,
+      "Quantity": 150
+    },
+    {
+      "product_id": 11,
+      "ProductName": "Garlic Pickle",
+      "Image":"https://recipes.timesofindia.com/photo/58413147.cms",
+      "UserName": "Deepa's Pickles",
+      "Email": "deepa@example.com",
+      "Category": "Pickles",
+      "Ingredients": ["Garlic", "Mustard Seeds", "Chili Powder", "Salt"],
+      "Price": 6.49,
+      "Quantity": 160
+    },
+    {
+      "product_id": 12,
+      "ProductName": "Paneer Tikka",
+      "Image":"https://i0.wp.com/vegecravings.com/wp-content/uploads/2018/04/Paneer-Tikka-Recipe-Step-By-Step-Instructions.jpg?fit=2324%2C1944&quality=30&strip=all&ssl=1",
+      "UserName": "Amit's Snacks",
+      "Email": "amit@example.com",
+      "Category": "Snacks",
+      "Ingredients": ["Paneer", "Marinade", "Bell Peppers", "Onions"],
+      "Price": 5.99,
+      "Quantity": 80
+    },
+    {
+      "product_id": 13,
+      "ProductName": "Fenugreek Seeds",
+      "Image":"https://th.bing.com/th/id/R.9675a0e49b2c55e371b3891fcb19e785?rik=OmG3fyDiWMJlBQ&riu=http%3a%2f%2fupload.wikimedia.org%2fwikipedia%2fcommons%2fe%2fe6%2fFenugreek_seeds.jpg&ehk=gEimYybmoyoAeWpqH0AthqyGM%2bcnHzNAH6k4riB5K6o%3d&risl=&pid=ImgRaw&r=0",
+      "UserName": "Neha's Spices",
+      "Email": "neha@example.com",
+      "Category": "Spices",
+      "Ingredients": ["Fenugreek"],
+      "Price": 2.99,
+      "Quantity": 100
+    },
+    {
+      "product_id": 14,
+      "ProductName": "Lemon Chutney",
+      "Image":"https://th.bing.com/th/id/OIP.Z7EJ_faBO2h3L9mTgfkx2gHaJ4?rs=1&pid=ImgDetMain",
+      "UserName": "Vikram's Pickles",
+      "Email": "vikram@example.com",
+      "Category": "Pickles",
+      "Ingredients": ["Lemon", "Green Chilies", "Ginger", "Jaggery"],
+      "Price": 7.99,
+      "Quantity": 120
+    },
+    {
+      "product_id": 15,
+      "ProductName": "Pani Puri",
+      "Image":"https://th.bing.com/th/id/R.2717b3a3b3e9aeb3813fd0c6d6b7af00?rik=Q9NgATzjO23FzQ&riu=http%3a%2f%2fwww.theasianslice.com%2fwp-content%2fuploads%2f2016%2f04%2fpani-puri-recipe-tas-authentic.jpg&ehk=Gpzyrs0ZqXS5ZsetMxYYLXwx4jTXOGaqLgCquJXq35M%3d&risl=&pid=ImgRaw&r=0",
+      "UserName": "Nisha's Snacks",
+      "Email": "nisha@example.com",
+      "Category": "Snacks",
+      "Ingredients": ["Puris", "Spiced Water", "Tamarind Chutney", "Chickpeas"],
+      "Price": 3.99,
+      "Quantity": 100
+    },
+    {
+      "product_id": 16,
+      "ProductName": "Coriander Powder",
+      "Image":"https://www.justgotochef.com/uploads/1565337647-Coriander%20powderLanding.png",
+      "UserName": "Rajesh's Spices",
+      "Email": "rajesh@example.com",
+      "Category": "Spices",
+      "Ingredients": ["Coriander"],
+      "Price": 3.49,
+      "Quantity": 130
+    }
+  ]
+  
