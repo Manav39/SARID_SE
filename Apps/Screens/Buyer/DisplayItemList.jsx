@@ -3,11 +3,12 @@ import React from "react";
 import { useNavigation } from "@react-navigation/native";
 
 export default function DisplayItemList({ itemList }) {
+  const navigation = useNavigation();
+
   const handleProductPress = (product) => {
     navigation.navigate("ProductDetails", { product });
   };
 
-  const navigation = useNavigation();
   return (
     <View style={styles.container}>
       <View>

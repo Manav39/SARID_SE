@@ -15,23 +15,49 @@ export default function SignUpScreen() {
   const [role, setRole] = useState("Buyer");
 
   const handleSignUp = async () => {
-    // Implement sign up logic here
+    // Username validation
+    if (!username.trim()) {
+      alert("Username cannot be empty.");
+      return;
+    }
+  
+    // Email validation
+    const emailRegex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
+    if (!emailRegex.test(email)) {
+      alert("Please enter a valid email address.");
+      return;
+    }
+  
+    // Password validation
+    const passwordRegex = /^(?=.*[!@#$%^&*(),.?":{}|<>]).{8,}$/;
+    if (password.length < 8) {
+      alert("Password must be at least 8 characters long.");
+      return;
+    }
+    if (!passwordRegex.test(password)) {
+      alert("Password must contain at least one special character.");
+      return;
+    }
+  
+    // Implement sign-up logic
     await createUserWithEmailAndPassword(FirebaseAuth, email, password)
       .then((cred) => {
         console.log("Success");
       })
       .catch((err) => console.error(err));
-
+  
     try {
       // Get a reference to the 'users' collection
       await addDoc(collection(db, "users"), {
         username: username,
         email: email,
+        password: password,  // Store the password (Not recommended for production)
         role: role,
         isApproved: false,
       });
-
+  
       console.log("User added to Firestore successfully!");
+      alert("Signup Successful!, Please Login to continue...");
     } catch (error) {
       console.error("Error adding user to Firestore: ", error);
     }

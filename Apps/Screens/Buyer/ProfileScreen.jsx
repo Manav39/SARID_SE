@@ -1,163 +1,91 @@
-import React from 'react';
-import { Image, StyleSheet, Text, View } from 'react-native';
+import React, { useEffect, useState } from 'react';
+import { Image, StyleSheet, Text, View, ScrollView } from 'react-native';
+import { collection, getDocs } from 'firebase/firestore';
+import { db } from '../../firebase';
 
 const SellerDashboard = () => {
+  const [orders, setOrders] = useState([]);
+  const [totalSpent, setTotalSpent] = useState(0);
+
+  // Fetch orders from Firestore
+  const fetchOrders = async () => {
+    try {
+      const querySnapshot = await getDocs(collection(db, 'orders'));
+      const ordersList = querySnapshot.docs.map((doc) => ({
+        id: doc.id,
+        ...doc.data(),
+      }));
+
+      // Calculate total amount spent
+      const total = ordersList.reduce((acc, order) => acc + parseFloat(order.totalPrice || 0), 0);
+
+      setOrders(ordersList);
+      setTotalSpent(total);
+    } catch (error) {
+      console.error('Error fetching orders:', error);
+    }
+  };
+
+  useEffect(() => {
+    fetchOrders();
+  }, []);
+
   return (
     <View>
       <View style={styles.container}>
         <View>
+          {/* Display Total Amount Spent */}
           <Text style={styles.headingText}>Dashboard</Text>
+          <Text style={styles.totalSpentText}>Total Amount Spent: Rs. {totalSpent.toFixed(2)}</Text>
         </View>
 
+        {/* Orders Summary Section */}
         <View style={styles.overallInfo}>
           <View style={styles.innerContain}>
             <View style={styles.orders}>
-              <Text>1,200</Text>
+              <Text>{orders.length}</Text>
               <Text>Orders</Text>
             </View>
-
             <View style={styles.gross}>
-              <Text>$12,500</Text>
-              <Text>gross</Text>
-            </View>
-
-            <View style={styles.pending}>
-              <Text>940</Text>
-              <Text>pending</Text>
+              <Text>Rs. {totalSpent.toFixed(2)}</Text>
+              <Text>Gross</Text>
             </View>
           </View>
         </View>
       </View>
 
-      <View style={{ backgroundColor: '#ffffff', borderRadius: 10, padding: 15, height: 600 }}>
-        <Text style={{ color: 'black', fontSize: 24, paddingBottom: 5 }}>All Orders</Text>
+      {/* Orders List Section */}
+      <ScrollView style={styles.scrollView}>
+        <Text style={styles.orderHeading}>All Orders</Text>
 
-        <View style={styles.order1}>
-          <View>
-            <Image style={{ height: 50, width: 50, borderRadius: 50 }} source={{
-              uri: 'https://th.bing.com/th/id/OIP.8XndbfQWVrtefJw4MJyOsAAAAA?rs=1&pid=ImgDetMain'
-            }}></Image>
-          </View>
+        {orders.length > 0 ? (
+          orders.map((order) => (
+            <View style={styles.orderItem} key={order.id}>
+              {/* Buyer's Email */}
+              <Text style={styles.emailText}>Buyer: {order.email}</Text>
 
-          <View>
-            <Text style={{ fontSize: 18, fontWeight: 'bold' }}>Lavang</Text>
-            <Text style={{ fontSize: 15 }}>Good for health</Text>
-          </View>
+              {/* List of Items in the Order */}
+              {order.items?.map((item, index) => (
+                <View key={index} style={styles.itemDetails}>
+                  <Text style={styles.itemName}>{item.productName}</Text>
+                  <Text>Price: Rs. {item.price}</Text>
+                  <Text>Quantity: {item.quantity}</Text>
+                </View>
+              ))}
 
-          <View style={{ flex: 1, justifyContent: 'center' }}>
-            <Text style={{ textAlign: 'right' }}>$140.50</Text>
-          </View>
-        </View>
-
-        <View style={styles.order1}>
-          <View>
-            <Image style={{ height: 50, width: 50, borderRadius: 50 }} source={{
-              uri: 'https://th.bing.com/th/id/OIP.8XndbfQWVrtefJw4MJyOsAAAAA?rs=1&pid=ImgDetMain'
-            }}></Image>
-          </View>
-
-          <View>
-            <Text style={{ fontSize: 18, fontWeight: 'bold' }}>Lavang</Text>
-            <Text style={{ fontSize: 15 }}>Good for health</Text>
-          </View>
-
-          <View style={{ flex: 1, justifyContent: 'center' }}>
-            <Text style={{ textAlign: 'right' }}>$140.50</Text>
-          </View>
-        </View>
-
-        <View style={styles.order1}>
-          <View>
-            <Image style={{ height: 50, width: 50, borderRadius: 50 }} source={{
-              uri: 'https://th.bing.com/th/id/OIP.8XndbfQWVrtefJw4MJyOsAAAAA?rs=1&pid=ImgDetMain'
-            }}></Image>
-          </View>
-
-          <View>
-            <Text style={{ fontSize: 18, fontWeight: 'bold' }}>Lavang</Text>
-            <Text style={{ fontSize: 15 }}>Good for health</Text>
-          </View>
-
-          <View style={{ flex: 1, justifyContent: 'center' }}>
-            <Text style={{ textAlign: 'right' }}>$140.50</Text>
-          </View>
-        </View>
-
-        <View style={styles.order1}>
-          <View>
-            <Image style={{ height: 50, width: 50, borderRadius: 50 }} source={{
-              uri: 'https://th.bing.com/th/id/OIP.8XndbfQWVrtefJw4MJyOsAAAAA?rs=1&pid=ImgDetMain'
-            }}></Image>
-          </View>
-
-          <View>
-            <Text style={{ fontSize: 18, fontWeight: 'bold' }}>Lavang</Text>
-            <Text style={{ fontSize: 15 }}>Good for health</Text>
-          </View>
-
-          <View style={{ flex: 1, justifyContent: 'center' }}>
-            <Text style={{ textAlign: 'right' }}>$140.50</Text>
-          </View>
-        </View>
-
-        <View style={styles.order1}>
-          <View>
-            <Image style={{ height: 50, width: 50, borderRadius: 50 }} source={{
-              uri: 'https://th.bing.com/th/id/OIP.8XndbfQWVrtefJw4MJyOsAAAAA?rs=1&pid=ImgDetMain'
-            }}></Image>
-          </View>
-
-          <View>
-            <Text style={{ fontSize: 18, fontWeight: 'bold' }}>Lavang</Text>
-            <Text style={{ fontSize: 15 }}>Good for health</Text>
-          </View>
-
-          <View style={{ flex: 1, justifyContent: 'center' }}>
-            <Text style={{ textAlign: 'right' }}>$140.50</Text>
-          </View>
-        </View>
-
-        <View style={styles.order1}>
-          <View>
-            <Image style={{ height: 50, width: 50, borderRadius: 50 }} source={{
-              uri: 'https://th.bing.com/th/id/OIP.8XndbfQWVrtefJw4MJyOsAAAAA?rs=1&pid=ImgDetMain'
-            }}></Image>
-          </View>
-
-          <View>
-            <Text style={{ fontSize: 18, fontWeight: 'bold' }}>Lavang</Text>
-            <Text style={{ fontSize: 15 }}>Good for health</Text>
-          </View>
-
-          <View style={{ flex: 1, justifyContent: 'center' }}>
-            <Text style={{ textAlign: 'right' }}>$140.50</Text>
-          </View>
-        </View>
-
-         <View style={styles.order1}>
-          <View>
-            <Image style={{ height: 50, width: 50, borderRadius: 50 }} source={{
-              uri: 'https://th.bing.com/th/id/OIP.8XndbfQWVrtefJw4MJyOsAAAAA?rs=1&pid=ImgDetMain'
-            }}></Image>
-          </View>
-
-          <View>
-            <Text style={{ fontSize: 18, fontWeight: 'bold' }}>Lavang</Text>
-            <Text style={{ fontSize: 15 }}>Good for health</Text>
-          </View>
-
-          <View style={{ flex: 1, justifyContent: 'center' }}>
-            <Text style={{ textAlign: 'right' }}>$140.50</Text>
-          </View>
-        </View>
-        
-
-        
-
-      </View>
+              {/* Total Price of the Order */}
+              <View style={styles.orderTotal}>
+                <Text style={{ fontWeight: 'bold' }}>Total Price: Rs. {order.totalPrice}</Text>
+              </View>
+            </View>
+          ))
+        ) : (
+          <Text style={{ textAlign: 'center', marginTop: 20 }}>No Orders Found</Text>
+        )}
+      </ScrollView>
     </View>
   );
-}
+};
 
 const styles = StyleSheet.create({
   headingText: {
@@ -167,9 +95,14 @@ const styles = StyleSheet.create({
     paddingHorizontal: 50,
     color: 'white',
   },
+  totalSpentText: {
+    fontSize: 18,
+    fontWeight: '600',
+    color: 'white',
+    paddingHorizontal: 50,
+  },
   container: {
     height: 200,
-    color: 'white',
     backgroundColor: '#FC6736',
   },
   overallInfo: {
@@ -199,21 +132,41 @@ const styles = StyleSheet.create({
     paddingRight: 20,
     paddingLeft: 10,
   },
-  pending: {
-    paddingLeft: 10,
-    textAlign: 'center',
+  scrollView: {
+    backgroundColor: '#ffffff',
+    borderRadius: 10,
+    padding: 15,
+    height: 600,
   },
-  order1: {
-    alignItems: 'center',
-    marginTop: 7,
-    borderRadius: 30,
-    padding: 5,
-    flex: 1,
-    flexDirection: 'row',
-    gap: 20,
+  orderHeading: {
+    color: 'black',
+    fontSize: 24,
+    paddingBottom: 5,
   },
-  productName: {},
-  productDescription: {},
+  orderItem: {
+    backgroundColor: '#f8f8f8',
+    borderRadius: 10,
+    marginVertical: 10,
+    padding: 15,
+  },
+  emailText: {
+    fontSize: 16,
+    fontWeight: '600',
+    marginBottom: 10,
+  },
+  itemDetails: {
+    marginVertical: 5,
+  },
+  itemName: {
+    fontSize: 18,
+    fontWeight: 'bold',
+  },
+  orderTotal: {
+    marginTop: 10,
+    borderTopWidth: 1,
+    borderTopColor: '#ccc',
+    paddingTop: 10,
+  },
 });
 
 export default SellerDashboard;

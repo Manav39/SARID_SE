@@ -127,7 +127,7 @@ const App = () => {
       sortedProductIds.includes(product.product_id)
     );
       setFilteredData(filteredData);
-      console.log(filteredData);
+      // console.log(filteredData);
   }, [sortedProductIds]);
     
   return (

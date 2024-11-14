@@ -39,7 +39,7 @@ function calculateCosineSimilarity(ingredients1, ingredients2) {
 
 function ProductList() {
     const { params } = useRoute();
-    console.log("Hello",params.SelectedValues);
+    // console.log("Hello",params.SelectedValues);
     const [sortedProductIds, setSortedProductIds] = useState([]);
 
     useEffect(() => {
@@ -52,7 +52,7 @@ function ProductList() {
 
         setSortedProductIds(sortedProductIds);
     }, []);
-    console.log(sortedProductIds);
+    // console.log(sortedProductIds);
     return (
         <View>
             {/* Render sorted product IDs */}

@@ -22,7 +22,7 @@ export default function CategoryListItem() {
     const snap = await getDocs(q);
     snap.forEach((doc) => {
       setItemList((itemList) => [...itemList, doc.data()]);
-      console.log(doc.data());
+      // console.log(doc.data());
     });
   };
   return (

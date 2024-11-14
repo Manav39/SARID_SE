@@ -13,7 +13,7 @@ const firebaseConfig = {
   projectId: "kitchen-207dd",
   storageBucket: "kitchen-207dd.appspot.com",
   messagingSenderId: "872649771407",
-  appId: "1:872649771407:web:ef30aadb63a7b27476e3fa",
+  appId: "1:872649771407:web:ef30aadb63a7b27476e3fa"
 };
 
 // Initialize Firebase

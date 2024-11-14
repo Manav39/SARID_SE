@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useNavigation } from "@react-navigation/native";
 import { db } from "../firebase";
 import { getDocs, collection, query, where } from "firebase/firestore";
@@ -12,6 +12,7 @@ import {
   StyleSheet,
   Image,
   Platform,
+  ToastAndroid
 } from "react-native";
 
 export default function LoginScreen() {
@@ -20,17 +21,42 @@ export default function LoginScreen() {
   const [password, setPassword] = useState("");
   const [email, setEmailUser] = useState("");
   const [role, setRoleUser] = useState("");
+  const [emailError, setEmailError] = useState("");
+  const [passwordError, setPasswordError] = useState("");
+
+  const validateEmail = (email) => {
+    const regex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/;
+    return regex.test(email);
+  };
+
+  useEffect(() => {
+    setEmail("");
+    setUserName("");
+    setRole("");
+  });
 
   const handleLogin = async () => {
+    setEmailError("");
+    setPasswordError("");
+
+    // Email validation
+    if (!validateEmail(email)) {
+      setEmailError("Please enter a valid email address.");
+      return;
+    }
+
+    // Password validation
+    if (!password) {
+      setPasswordError("Password cannot be empty.");
+      return;
+    }
+
     try {
       const q = query(collection(db, "users"), where("email", "==", email));
       const snapshot = await getDocs(q);
       if (snapshot.empty) {
         if (Platform.OS === "android") {
-          ToastAndroid.show(
-            "Error! Please try again later",
-            ToastAndroid.SHORT
-          );
+          ToastAndroid.show("Error! Please try again later", ToastAndroid.SHORT);
         } else {
           Alert.alert("Error!", "Please try again later");
         }
@@ -79,6 +105,8 @@ export default function LoginScreen() {
           value={email}
           onChangeText={(text) => setEmailUser(text)}
         />
+        {emailError ? <Text style={styles.errorText}>{emailError}</Text> : null}
+
         <TextInput
           style={styles.input}
           secureTextEntry
@@ -86,6 +114,7 @@ export default function LoginScreen() {
           value={password}
           onChangeText={(text) => setPassword(text)}
         />
+        {passwordError ? <Text style={styles.errorText}>{passwordError}</Text> : null}
 
         <Button color="#FC6736" title="Login" onPress={handleLogin} />
       </View>
@@ -123,8 +152,9 @@ const styles = StyleSheet.create({
     paddingHorizontal: 10,
     borderRadius: 10,
   },
-  picker: {
-    height: 50,
+  errorText: {
+    color: "red",
+    fontSize: 12,
     marginBottom: 10,
   },
   footerText: {
